@@ -1,0 +1,26 @@
+# Dependencies
+client/node_modules
+hardhat/node_modules
+
+# Dev
+client/.next
+client/build-info
+
+# Coverage
+hardhat/coverage
+hardhat/coverage.json
+
+# Production
+client/build
+
+# Contract's artifacts
+hardhat/.openzeppelin
+
+# Cache
+hardhat/cache
+
+# Environment variables
+.env
+
+# Misc
+.DS_Store
