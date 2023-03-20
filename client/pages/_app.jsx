@@ -4,14 +4,14 @@ import { localhost } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 
 import Layout from '../components/Layout/Layout';
-import { FillGoodProvider } from '../context';
+import { FillgoodProvider } from '../context';
 
 import '@rainbow-me/rainbowkit/styles.css';
 
 const { chains, provider } = configureChains([localhost], [publicProvider()]);
 
 const { connectors } = getDefaultWallets({
-  appName: 'FillGoodProvider',
+  appName: 'FillgoodProvider',
   chains,
 });
 
@@ -34,11 +34,11 @@ const App = ({ Component, pageProps }) => {
           fontStack: 'system',
         })}
       >
-        <FillGoodProvider>
+        <FillgoodProvider>
           <Layout>
             <Component {...pageProps} />
           </Layout>
-        </FillGoodProvider>
+        </FillgoodProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   );
