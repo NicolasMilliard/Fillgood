@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useAccount } from 'wagmi';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 
+import { useFillgood } from '../context';
+
+import { getMessage } from '../utils/getMessage';
+import { setMessage } from '../utils/setMessage';
+
 const Homepage = () => {
-  const { address } = useAccount();
+  const {
+    state: { simpleStorageContract },
+  } = useFillgood();
   // Used to fix hydration error
   const [hasMounted, setHasMounted] = useState(false);
 
@@ -13,7 +19,21 @@ const Homepage = () => {
 
   if (!hasMounted) return null;
 
-  return <ConnectButton />;
+  const getMessageFromSC = async () => {
+    await getMessage(simpleStorageContract);
+  };
+
+  const setMessageFromSC = async () => {
+    await setMessage(simpleStorageContract, 'bonjour');
+  };
+
+  return (
+    <>
+      <ConnectButton />
+      <button onClick={getMessageFromSC}>Get message</button>
+      <button onClick={setMessageFromSC}>Set message (bonjour)</button>
+    </>
+  );
 };
 
 export default Homepage;
